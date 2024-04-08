@@ -1,8 +1,28 @@
+type pokeType = {
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  };
+  
+type abilities = {
+    ability: {
+      name: string;
+      url: string;
+    };
+    is_hidden: boolean;
+    slot: number;
+};
+
 export interface Pokemon{
     id:number;
     name:string;
-    types:object[];
-    
+    weight:number;
+    height:number;
+    abilities: abilities[];
+    types: pokeType[];
+    category: string;
     sprites: {
         back_default: string;
         versions: {
@@ -23,3 +43,5 @@ export interface PokemonList{
     name:string;
     url:string;
 }
+
+

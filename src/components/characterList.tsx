@@ -13,6 +13,7 @@ const CharacterList = () => {
         getPokemons.getList(offset).then((response)=>{
             //console.log(response.data.results)
             setCharacters(response.data.results)
+            console.log(offset)
         }).catch((error)=>{
             console.log(error)
         })

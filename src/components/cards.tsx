@@ -2,29 +2,75 @@ import React, { useState } from 'react'
 import { Pokemon } from '../types/types'
 import { getPokemons } from '../api/list';
 import './cards.css'
+import Pokeinfo from './pokeinfo';
+
 
 const PokeCard = ({ url }: { url:string}) => {
     const [pokemon, setPokemon] = useState<Pokemon>();
+    const [openModal, setOpenModal] = useState(false);
+
 
     React.useEffect(() => {
         getPokemons.getPokedata(url).then((response) => {
-            //console.log(response.data);
             setPokemon(response.data);
         });
     }, [url]);
 
-    const showInfo = () => {
-       console.log(pokemon)
-    };
-
-    return (
-        <div className='card' onClick={showInfo}>
-            <img src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>
-            <h1>{pokemon?.name}</h1>
-            <h2>#{pokemon?.id}</h2>
+    // const showInfo = () => {
+    //    // console.log(pokemon);
+    //      <Pokeinfo>
             
-        </div>
-    );
+    //     </Pokeinfo>    
+    // };
+
+
+    if(pokemon && pokemon.id>151){
+        return null;
+    }
+    else{
+        return (
+            <>
+            <div className='card' onClick={()=> setOpenModal(!openModal)}>
+                <img className='characterImg' src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>
+                <h2 className='id-position'>#{pokemon?.id}</h2>
+                <h2 className='name-position'>{pokemon?.name}</h2>
+                {
+                    pokemon?.types.map((type, index) => {
+                        return (
+                            <span className='subtitle-position' key={index}>{type.type.name}<hr /></span>
+                        );
+                    })
+                }
+                
+            </div>
+            {pokemon && 
+                <Pokeinfo isOpen={openModal} onClose={()=>setOpenModal(false)}>
+                    <div>
+                    <img height={150} width={150} src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>
+                    <h2 className='id-position'>#{pokemon?.id}</h2>
+                    <h2 className='name-position'>{pokemon?.name}</h2>
+                    <p>
+                    {
+                    pokemon?.types.map((type, index) => {
+                        return (
+                            <span className='subtitle-position' key={index}>{type.type.name}<hr /></span>
+                        );
+                    })
+                }
+                </p>
+                <p>
+                    Peso: {pokemon?.weight/10} Kg
+                </p>
+                <p>
+                    Altura: {pokemon?.height/10} m
+                </p>
+                    </div>
+                </Pokeinfo>}
+            </>
+            
+        );
+    }
+    
 }
 
 export default PokeCard
