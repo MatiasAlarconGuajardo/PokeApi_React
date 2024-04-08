@@ -30,6 +30,7 @@ export interface Pokemon{
     weight:number;
     height:number;
     stats:stats[] ;
+    base_experience:number;
     abilities: abilities[];
     types: pokeType[];
     category: string;

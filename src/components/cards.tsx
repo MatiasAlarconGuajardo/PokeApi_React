@@ -13,10 +13,9 @@ const PokeCard = ({ url }: { url:string}) => {
 
     React.useEffect(() => {
         getPokemons.getData(url).then((response) => {
-            console.log(response.data.abilities[0].ability)
-            console.log(response.data.stats)
-            console.log(response.data.species.url)
-            console.log(response.data.types[0].type);
+            console.log("Habilidades",response.data.abilities[0].ability)
+            console.log("Especie",response.data.species.url)
+            console.log("Tipos",response.data.types[0].type);
             setPokemon(response.data);
         });
         
@@ -65,6 +64,7 @@ const PokeCard = ({ url }: { url:string}) => {
                 <p>
                    <b>Altura:</b> {pokemon?.height/10} m
                 </p>
+                <p> <b>Exp Base:</b> {pokemon.base_experience} XP</p>
                 <ul className='stat-list'>Estadisticas:
                     <li>
                         <b>Vida:</b> {pokemon.stats[0].base_stat}
