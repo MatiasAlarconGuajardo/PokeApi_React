@@ -4,6 +4,7 @@ import { getPokemons } from '../api/list';
 import './cards.css'
 import Pokeinfo from './pokeinfo';
 
+//https://gist.github.com/gcorreaq/593381b026aeb093dd3a866d15299875
 
 const PokeCard = ({ url }: { url:string}) => {
     const [pokemon, setPokemon] = useState<Pokemon>();
