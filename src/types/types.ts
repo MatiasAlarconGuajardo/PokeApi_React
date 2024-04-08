@@ -1,4 +1,4 @@
-type pokeType = {
+export type pokeType = {
     slot: number;
     type: {
       name: string;

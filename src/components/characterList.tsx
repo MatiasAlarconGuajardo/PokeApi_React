@@ -8,12 +8,10 @@ import './characterlist.css'
 const CharacterList = () => {
     const [characters, setCharacters] = useState<PokemonList[]>([]);
     const [offset,setOffset]=useState<number>(0);
-    
+ 
     React.useEffect(()=>{
         getPokemons.getList(offset).then((response)=>{
-            //console.log(response.data.results)
             setCharacters(response.data.results)
-            console.log(offset)
         }).catch((error)=>{
             console.log(error)
         })
@@ -23,7 +21,6 @@ const CharacterList = () => {
     
     return (
     <div>
-      <h1>Listado</h1>
       <div className='parent'>
         {
             characters.map((character,index)=>{

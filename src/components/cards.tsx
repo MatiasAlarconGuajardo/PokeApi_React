@@ -8,21 +8,13 @@ import Pokeinfo from './pokeinfo';
 const PokeCard = ({ url }: { url:string}) => {
     const [pokemon, setPokemon] = useState<Pokemon>();
     const [openModal, setOpenModal] = useState(false);
-
+    
 
     React.useEffect(() => {
-        getPokemons.getPokedata(url).then((response) => {
+        getPokemons.getData(url).then((response) => {
             setPokemon(response.data);
         });
     }, [url]);
-
-    // const showInfo = () => {
-    //    // console.log(pokemon);
-    //      <Pokeinfo>
-            
-    //     </Pokeinfo>    
-    // };
-
 
     if(pokemon && pokemon.id>151){
         return null;

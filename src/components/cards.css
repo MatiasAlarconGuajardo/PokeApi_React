@@ -4,12 +4,14 @@
     padding: 1rem;
     width: 300px;
     height: 300px;
+    font-family: "system-ui";
 }
 
 .characterImg{
     object-fit:contain;
     width: 100px;
     height: 100px;
+    ;
 }
 
 .id-position {
