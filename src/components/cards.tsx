@@ -13,8 +13,14 @@ const PokeCard = ({ url }: { url:string}) => {
 
     React.useEffect(() => {
         getPokemons.getData(url).then((response) => {
+            console.log(response.data.abilities[0].ability)
+            console.log(response.data.stats)
+            console.log(response.data.species.url)
+            console.log(response.data.types[0].type);
             setPokemon(response.data);
         });
+        
+            
     }, [url]);
 
     if(pokemon && pokemon.id>151){
@@ -59,6 +65,26 @@ const PokeCard = ({ url }: { url:string}) => {
                 <p>
                    <b>Altura:</b> {pokemon?.height/10} m
                 </p>
+                <ul className='stat-list'>Estadisticas:
+                    <li>
+                        <b>Vida:</b> {pokemon.stats[0].base_stat}
+                    </li>
+                    <li>
+                        <b>Ataque:</b> {pokemon.stats[1].base_stat}
+                    </li>
+                    <li>
+                        <b>Defensa:</b> {pokemon.stats[2].base_stat}
+                    </li>
+                    <li>
+                        <b>Ataque Especial: </b>{pokemon.stats[3].base_stat}
+                    </li>
+                    <li>
+                        <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
+                    </li>
+                    <li>
+                        <b>Velocidad:</b> {pokemon.stats[5].base_stat}
+                    </li>
+                </ul>
                     </div>
                 </Pokeinfo>}
             </>
