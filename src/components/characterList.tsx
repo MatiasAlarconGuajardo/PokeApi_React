@@ -11,7 +11,7 @@ const CharacterList = () => {
     
     React.useEffect(()=>{
         getPokemons.getList(offset).then((response)=>{
-            console.log(response.data.results)
+            //console.log(response.data.results)
             setCharacters(response.data.results)
         }).catch((error)=>{
             console.log(error)
@@ -27,13 +27,13 @@ const CharacterList = () => {
         {
             characters.map((character,index)=>{
                 return(
-                   <PokeCard key={index} id={index+1} url={character.url}/>
+                   <PokeCard key={index} url={character.url}/>
                 )
             })
         }       
       </div>
-      <button onClick={()=>setOffset(offset+9)}>Siguiente</button>
-      <button onClick={()=>setOffset(offset-9)} disabled={offset===0}>Anterior</button>
+      <button className='btn' onClick={()=>setOffset(offset+9)} disabled={offset>=142} >Siguiente</button>
+      <button className='btn'onClick={()=>setOffset(offset-9)} disabled={offset===0}>Anterior</button>
     </div>
   )
 }

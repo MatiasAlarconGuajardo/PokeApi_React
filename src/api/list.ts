@@ -7,8 +7,7 @@ export const getPokemons={
     getList:(offset:number)=>{
         return instance.get(`?${endpoint}${offset}&limit=9`)
     },
-    getPokedata:(id:number)=>{
-        return instance.get(`/${id}`)
+    getPokedata:(url:string)=>{
+        return instance.get(url)
     }
-
 }

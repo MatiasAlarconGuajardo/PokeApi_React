@@ -1,7 +1,8 @@
 export interface Pokemon{
     id:number;
     name:string;
-    types:string[];
+    types:object[];
+    
     sprites: {
         back_default: string;
         versions: {
