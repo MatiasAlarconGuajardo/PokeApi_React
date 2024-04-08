@@ -39,10 +39,12 @@ const PokeCard = ({ url }: { url:string}) => {
             {pokemon && 
                 <Pokeinfo isOpen={openModal} onClose={()=>setOpenModal(false)}>
                     <div>
-                    <img height={150} width={150} src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>
+                    <img height={150} width={150} src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>                    
                     <h2 className='id-position'>#{pokemon?.id}</h2>
                     <h2 className='name-position'>{pokemon?.name}</h2>
-                    <p>
+                    <p>Descripcion: <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vulputate orci lorem, at porttitor enim finibus elementum. Nullam egestas ex ac leo efficitur, non suscipit felis iaculis.  </p>
+                    <p><b>Tipos:</b><br/>
                     {
                     pokemon?.types.map((type, index) => {
                         return (
@@ -52,10 +54,10 @@ const PokeCard = ({ url }: { url:string}) => {
                 }
                 </p>
                 <p>
-                    Peso: {pokemon?.weight/10} Kg
+                     <b>Peso:</b> {pokemon?.weight/10} Kg 
                 </p>
                 <p>
-                    Altura: {pokemon?.height/10} m
+                   <b>Altura:</b> {pokemon?.height/10} m
                 </p>
                     </div>
                 </Pokeinfo>}

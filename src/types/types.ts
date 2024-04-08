@@ -29,7 +29,6 @@ export interface Pokemon{
                 "generation-v": {
                 "black-white": {
                     animated: {
-                        back_default: string;
                         front_default: string;
                        
                     };
