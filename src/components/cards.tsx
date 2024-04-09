@@ -37,7 +37,7 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         const esNames=data.names.find(
          (name:any) => name.language.name === 'es'
         );
-        console.log(esNames);
+        //console.log(esNames);
         return esNames?esNames.name:"Nombre no encontrado";
     }
     catch(error){

@@ -5,14 +5,19 @@ import './pokemonDetails.css';
 
 
 const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
-
+    
     const [flavorText, setFlavorText] = useState<string>('');
+   // const [abilities,setAbilities] = useState<string[]>([]);
     
     useEffect(() => {
         const fetchFlavorText = async () => {
           try {
             const urlFlavor =`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`;
             const response = await getPokemons.getData(urlFlavor);
+            //console.log(pokemon)
+            
+            
+
             const data = response.data;
             const filteredEntries = data.flavor_text_entries.filter(
               (entry: any) => entry.language.name === 'es'
@@ -26,9 +31,27 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
             console.error('Error al obtener el texto:', error);
           }
         };
-    
         fetchFlavorText();
       }, [pokemon]);
+
+
+      // const abilities = pokemon.abilities.map((ability: { ability: { url: string; }; }) =>
+
+      //   //console.log(ability.ability.url)
+      //   fetchAbilities(ability.ability.url)
+      // );
+
+      // const abilitiesArray = await Promise.all(abilities);
+      // console.log(abilitiesArray);
+      // const fetchAbilities = async (typeUrl:string) => {
+      //   try{
+
+      //   }catch(error){
+      //     console.error('Error al obtener las habilidades:', error);
+      //   }
+
+      // }
+    
 
   return (
     <div>
