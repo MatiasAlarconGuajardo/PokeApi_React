@@ -54,20 +54,26 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
     
 
   return (
-    <div>
-      <img
-        height={115}
-        width={115}
+    <div className='info-continer'>
+      <div className='sprite-position'>
+      <img  
+        height={150}
+        width={150}
         src={pokemon.sprites.other['official-artwork'].front_default}
         alt={`${pokemon.name} sprite`}
       />
+      </div>
 
+      <div  className='name-container'>
       <h2 className='id-position'>Nº {pokemon.id}</h2>
       <h2 className='name-position'>{pokemon.name}</h2>
+      </div>
 
       <h4>Descripcion:</h4>
       <p>{flavorText}</p>
-      <h4>Tipos:</h4>      
+      <h4>Tipos:</h4>  
+      
+          
       <div className='card-types'>
         {typeName?.map((typeName, index) => (
           <span className='subtitle-position' key={index}>

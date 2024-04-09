@@ -1,7 +1,25 @@
+.sprite-position{
+    display: flex;
+    justify-content: center;
+    background-color: #d8e4e9;
+    border-radius: 10px;
+        
+}
+
+.name-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
 .card-types{
     display: flex;
     justify-content: space-evenly;
 }
+
+
+
+
+
 
 .stats-div{
     display: flex;
@@ -14,3 +32,4 @@
     padding: 1em 1em;
     
 }
+
