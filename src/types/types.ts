@@ -58,3 +58,22 @@ export interface PokemonList{
 }
 
 
+
+export interface ModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    pokemon: Pokemon;
+    typeName:string[];
+  }
+
+
+export interface DetailsProps {
+    pokemon: Pokemon;
+    typeName:string[];
+  }
+
+  
+export interface CardProps {
+    url: string;
+  }
+  

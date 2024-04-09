@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Pokemon } from '../types/types';
+import { CardProps, Pokemon } from '../types/types';
 import { getPokemons } from '../api/list';
 import './cards.css';
 import PokemonModal from './pokemonModal';
+//import Sidebar from './sideBar';
 
 
-interface Props {
-  url: string;
-}
-
-const PokemonCard: React.FC<Props> = ({ url }) => {
+const PokemonCard: React.FC<CardProps> = ({ url }) => {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [typeNames, setTypeNames] = useState<string[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -67,6 +64,7 @@ const PokemonCard: React.FC<Props> = ({ url }) => {
         </div>
       </div>
       {pokemon && (
+        //<Sidebar  isOpen={openModal} pokemon={pokemon} />
         <PokemonModal isOpen={openModal} onClose={() => setOpenModal(false)} pokemon={pokemon} typeName={typeNames} />
       )}
     </>

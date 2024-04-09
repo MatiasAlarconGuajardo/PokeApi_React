@@ -1,11 +1,18 @@
 import './App.css';
 import CharacterList from './components/characterList';
+import Layout from './components/layout';
+//import Sidebar from './components/sideBar';
 
 function App() {
   return (
-    <div className="App">
-      <CharacterList/>
-    </div>
+    <>
+    <Layout>
+    <CharacterList/>
+      
+      {/* <Sidebar/> */}
+      
+    </Layout>
+    </>
   );
 }
 

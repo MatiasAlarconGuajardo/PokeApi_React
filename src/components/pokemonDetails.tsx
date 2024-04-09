@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Pokemon } from '../types/types';
+import { DetailsProps } from '../types/types';
 import { getPokemons } from '../api/list';
 import './pokemonDetails.css';
-interface Props {
-  pokemon: Pokemon;
-  typeName:string[];
-}
 
-const PokemonDetails: React.FC<Props> = ({ pokemon,typeName }) => {
+
+const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
 
     const [flavorText, setFlavorText] = useState<string>('');
     
