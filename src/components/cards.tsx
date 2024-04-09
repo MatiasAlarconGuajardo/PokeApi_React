@@ -23,6 +23,7 @@ const PokemonCard: React.FC<Props> = ({ url }) => {
         const typePromises = response.data.types.map((type: { type: { url: string; }; }) =>
           getTypeNames(type.type.url)
         );
+        //console.log(typePromises)
         const typeNamesArray = await Promise.all(typePromises);
         setTypeNames(typeNamesArray);
       } catch (error) {
@@ -57,12 +58,13 @@ const PokemonCard: React.FC<Props> = ({ url }) => {
         />
         <h2 className='id-position'>Nº {pokemon?.id}</h2>
         <h2 className='name-position'>{pokemon?.name}</h2>
+        <div className='types'>
         {typeNames?.map((typeName, index) => (
           <span className='subtitle-position' key={index}>
             {typeName}
-            <hr />
           </span>
         ))}
+        </div>
       </div>
       {pokemon && (
         <PokemonModal isOpen={openModal} onClose={() => setOpenModal(false)} pokemon={pokemon} typeName={typeNames} />

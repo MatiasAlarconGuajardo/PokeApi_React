@@ -1,0 +1,18 @@
+.card-types{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.stats-div{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.stats-items{
+    display: flex;
+    flex-direction: row;
+    align-items:normal;
+    justify-content: space-evenly;
+    padding: 1em 1em;
+    
+}

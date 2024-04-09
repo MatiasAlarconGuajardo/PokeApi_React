@@ -9,5 +9,5 @@ export const getPokemons={
     },
     getData:(url:string)=>{
         return instance.get(url)
-    }
+    },
 }

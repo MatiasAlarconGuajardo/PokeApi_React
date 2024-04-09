@@ -34,7 +34,11 @@ export interface Pokemon{
     abilities: abilities[];
     types: pokeType[];
     sprites: {
-        back_default: string;
+        other:{
+            "official-artwork": {
+                front_default: string;
+            };
+        }
         versions: {
                 "generation-v": {
                 "black-white": {
