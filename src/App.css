@@ -1,7 +1,18 @@
-.App {
-  text-align: center;
-  
-}
 body{
   background-color: #dee0e3;
+}
+
+.app-container {
+  display: flex;
+  text-align: center;
+}
+
+.character-list {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  padding: 20px;
 }
