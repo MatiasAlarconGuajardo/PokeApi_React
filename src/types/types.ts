@@ -33,7 +33,6 @@ export interface Pokemon{
     base_experience:number;
     abilities: abilities[];
     types: pokeType[];
-    category: string;
     sprites: {
         back_default: string;
         versions: {

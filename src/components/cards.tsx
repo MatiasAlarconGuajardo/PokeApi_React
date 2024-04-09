@@ -1,97 +1,74 @@
-import React, { useState } from 'react'
-import { Pokemon } from '../types/types'
+import React, { useState, useEffect } from 'react';
+import { Pokemon } from '../types/types';
 import { getPokemons } from '../api/list';
-import './cards.css'
-import Pokeinfo from './pokeinfo';
+import './cards.css';
+import PokemonModal from './pokemonModal';
 
-//https://gist.github.com/gcorreaq/593381b026aeb093dd3a866d15299875
 
-const PokeCard = ({ url }: { url:string}) => {
-    const [pokemon, setPokemon] = useState<Pokemon>();
-    const [openModal, setOpenModal] = useState(false);
-    
-
-    React.useEffect(() => {
-        getPokemons.getData(url).then((response) => {
-            console.log("Habilidades",response.data.abilities[0].ability)
-            console.log("Especie",response.data.species.url)
-            console.log("Tipos",response.data.types[0].type);
-            setPokemon(response.data);
-        });
-        
-            
-    }, [url]);
-
-    if(pokemon && pokemon.id>151){
-        return null;
-    }
-    else{
-        return (
-            <>
-            <div className='card' onClick={()=> setOpenModal(!openModal)}>
-                <img className='characterImg' src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>
-                <h2 className='id-position'>#{pokemon?.id}</h2>
-                <h2 className='name-position'>{pokemon?.name}</h2>
-                {
-                    pokemon?.types.map((type, index) => {
-                        return (
-                            <span className='subtitle-position' key={index}>{type.type.name}<hr /></span>
-                        );
-                    })
-                }
-                
-            </div>
-            {pokemon && 
-                <Pokeinfo isOpen={openModal} onClose={()=>setOpenModal(false)}>
-                    <div>
-                    <img height={150} width={150} src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default} alt={''}/>                    
-                    <h2 className='id-position'>#{pokemon?.id}</h2>
-                    <h2 className='name-position'>{pokemon?.name}</h2>
-                    <p>Descripcion: <br/>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vulputate orci lorem, at porttitor enim finibus elementum. Nullam egestas ex ac leo efficitur, non suscipit felis iaculis.  </p>
-                    <p><b>Tipos:</b><br/>
-                    {
-                    pokemon?.types.map((type, index) => {
-                        return (
-                            <span className='subtitle-position' key={index}>{type.type.name}<hr /></span>
-                        );
-                    })
-                }
-                </p>
-                <p>
-                     <b>Peso:</b> {pokemon?.weight/10} Kg 
-                </p>
-                <p>
-                   <b>Altura:</b> {pokemon?.height/10} m
-                </p>
-                <p> <b>Exp Base:</b> {pokemon.base_experience} XP</p>
-                <ul className='stat-list'>Estadisticas:
-                    <li>
-                        <b>Vida:</b> {pokemon.stats[0].base_stat}
-                    </li>
-                    <li>
-                        <b>Ataque:</b> {pokemon.stats[1].base_stat}
-                    </li>
-                    <li>
-                        <b>Defensa:</b> {pokemon.stats[2].base_stat}
-                    </li>
-                    <li>
-                        <b>Ataque Especial: </b>{pokemon.stats[3].base_stat}
-                    </li>
-                    <li>
-                        <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
-                    </li>
-                    <li>
-                        <b>Velocidad:</b> {pokemon.stats[5].base_stat}
-                    </li>
-                </ul>
-                    </div>
-                </Pokeinfo>}
-            </>
-            
-        );
-    }
-    
+interface Props {
+  url: string;
 }
 
-export default PokeCard
+const PokemonCard: React.FC<Props> = ({ url }) => {
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  const [typeNames, setTypeNames] = useState<string[]>([]);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getPokemons.getData(url);
+        setPokemon(response.data);
+
+        const typePromises = response.data.types.map((type: { type: { url: string; }; }) =>
+          getTypeNames(type.type.url)
+        );
+        const typeNamesArray = await Promise.all(typePromises);
+        setTypeNames(typeNamesArray);
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+      }
+    };
+    fetchData();
+  }, [url]);
+  
+  const getTypeNames = async(typeUrl:string) => {
+    try{
+        const response = await getPokemons.getData(typeUrl);
+        const data = await response.data;
+        const esNames=data.names.find(
+         (name:any) => name.language.name === 'es'
+        );
+        console.log(esNames);
+        return esNames?esNames.name:"Nombre no encontrado";
+    }
+    catch(error){
+      console.error('Error al obtener los tipos:', error);
+    }
+  }
+
+  return (
+    <>
+      <div className='card' onClick={() => setOpenModal(!openModal)}>
+        <img
+          className='characterImg'
+          src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default}
+          alt={''}
+        />
+        <h2 className='id-position'>Nº {pokemon?.id}</h2>
+        <h2 className='name-position'>{pokemon?.name}</h2>
+        {typeNames?.map((typeName, index) => (
+          <span className='subtitle-position' key={index}>
+            {typeName}
+            <hr />
+          </span>
+        ))}
+      </div>
+      {pokemon && (
+        <PokemonModal isOpen={openModal} onClose={() => setOpenModal(false)} pokemon={pokemon} typeName={typeNames} />
+      )}
+    </>
+  );
+};
+
+export default PokemonCard;

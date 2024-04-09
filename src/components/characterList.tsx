@@ -15,8 +15,6 @@ const CharacterList = () => {
         }).catch((error)=>{
             console.log(error)
         })
-        
-
     },[offset])
     
     return (
@@ -30,8 +28,8 @@ const CharacterList = () => {
             })
         }       
       </div>
-      <button className='btn' onClick={()=>setOffset(offset+9)} disabled={offset>=142} >Siguiente</button>
       <button className='btn'onClick={()=>setOffset(offset-9)} disabled={offset===0}>Anterior</button>
+      <button className='btn' onClick={()=>setOffset(offset+9)} disabled={offset>=142} >Siguiente</button>
     </div>
   )
 }

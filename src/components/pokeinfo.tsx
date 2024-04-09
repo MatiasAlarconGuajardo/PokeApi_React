@@ -12,7 +12,7 @@ const Pokeinfo = ({children,isOpen,onClose}: {children: ReactNode,isOpen:boolean
                 <div className='wrapper'>
                     <div className='content' onClick={e=>e.stopPropagation()}>
                         {children}
-                        <button type='button' onClick={onClose}>Close</button>
+                        <button className='btn-close' type='button' onClick={onClose}><b>Cerrar</b></button>
                     </div>
                 </div>
             </div>
