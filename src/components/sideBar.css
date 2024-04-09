@@ -1,14 +1,21 @@
-.PokeInfo{
+.sidebar-info{
     display: flex;
     flex-direction: column;
-    width: 300px; 
-    height: 50vh; 
-    position:static;
+    width: 25%;
+    height: 75%;
+    position:fixed;
     align-items: center;
-    top: 0;
-    right: 0;
+    top: 100px;
+    right: 100px;
     background-color: #f1f1f1; 
     border-left: 1px solid #ccc; 
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 5px 5px 5px black;
     padding: 20px; 
     overflow-y: auto; 
+    
+    @media screen  and (max-width:1660px){
+        display: none;   
+    }
 }

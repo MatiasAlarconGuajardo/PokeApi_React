@@ -1,7 +1,7 @@
 import './App.css';
 import CharacterList from './components/characterList';
 import Layout from './components/layout';
-import Sidebar from './components/sideBar';
+//import Sidebar from './components/sideBar';
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
           <CharacterList />
         </div>
         <div className="sidebar">
-          <Sidebar />
+          
         </div>
       </div>
     </Layout>
