@@ -3,7 +3,7 @@ import { CardProps, Pokemon } from '../types/types';
 import { getPokemons } from '../api/list';
 import './cards.css';
 import PokemonModal from './pokemonModal';
-//import Sidebar from './sideBar';
+
 
 
 const PokemonCard: React.FC<CardProps> = ({ url }) => {
@@ -64,7 +64,6 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         </div>
       </div>
       {pokemon && (
-        //<Sidebar  isOpen={openModal} pokemon={pokemon} />
         <PokemonModal isOpen={openModal} onClose={() => setOpenModal(false)} pokemon={pokemon} typeName={typeNames} />
       )}
     </>
