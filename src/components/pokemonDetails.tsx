@@ -56,27 +56,29 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
   return (
     <div>
       <img
-        height={150}
-        width={150}
+        height={115}
+        width={115}
         src={pokemon.sprites.other['official-artwork'].front_default}
         alt={`${pokemon.name} sprite`}
       />
+
       <h2 className='id-position'>Nº {pokemon.id}</h2>
       <h2 className='name-position'>{pokemon.name}</h2>
-      
-      <p>Descripcion: <br/></p>
-      <p ><b>{flavorText}</b></p>
-      <hr/>
-      <p><b>Tipos:</b></p>      
+
+      <h4>Descripcion:</h4>
+      <p>{flavorText}</p>
+      <h4>Tipos:</h4>      
       <div className='card-types'>
         {typeName?.map((typeName, index) => (
           <span className='subtitle-position' key={index}>
             {typeName}
-            <br />
           </span>
         ))}
       </div>
-      <hr/>
+
+      <h4>Habilidades:</h4>
+      <p>Habilidades</p>
+
       <div className='stats-div'>
       <p>
         <b>Peso:</b> {pokemon?.weight/10} Kg 
@@ -86,8 +88,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       </p>
       <p> <b>Exp Base:</b> {pokemon.base_experience} XP</p>
       </div>
-      <hr/>
-      <p><b>Estadisticas:</b></p>
+      <h4><b>Estadisticas:</b></h4>
       <div className='stats-items'>
           <b>Vida: </b>{pokemon.stats[0].base_stat}     
           <b>Ataque: </b>{pokemon.stats[1].base_stat}
@@ -95,10 +96,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           <b>Ataque Especial: </b>{pokemon.stats[3].base_stat}
           <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
           <b>Velocidad:</b>{pokemon.stats[5].base_stat}
-
       </div>
-      
-    
     </div>
   );
 };
