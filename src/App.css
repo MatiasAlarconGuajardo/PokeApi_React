@@ -1,18 +1,16 @@
 body{
-  background-image: url('../public/pokemon\ grass.jpg') ; 
+  background-image: url('../public/background.jpg') ; 
 }
 
 .app-container {
   display: flex;
   text-align: center;
+  
 }
 
 .character-list {
   flex: 1;
   padding: 20px;
+  margin: 1;
 }
 
-.sidebar {
-  flex: 1;
-  padding: 20px;
-}

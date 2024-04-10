@@ -16,9 +16,7 @@
       right: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
       justify-content: center;
-      align-items: center;
       animation: none;
   }
 }
@@ -45,31 +43,6 @@
   padding: 20px;
 }
 
-.btn-close {
-  background: #9cad9a;
-  border: 1px solid #9cad9a;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-.btn-close:hover,
-.btn-close:active {
-   background-color: #c8e3c5;
-}
-
-.btn-close:active {
-  opacity: 0.5;
-}
 @keyframes slide-in {
   0% {
       transform: translateX(100%);

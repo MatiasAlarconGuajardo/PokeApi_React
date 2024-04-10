@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { DetailsProps } from '../types/types';
+import { colours, DetailsProps } from '../types/types';
 import { getPokemons } from '../api/list';
 import './pokemonDetails.css';
-
+import styles from './styles.module.css';
 
 const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
     
@@ -74,9 +74,13 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       <h4>Tipos:</h4>  
       
           
-      <div className='card-types'>
+      <div className={styles.displayParalelo}>
         {typeName?.map((typeName, index) => (
-          <span className='subtitle-position' key={index}>
+          <span className='subtitle-position' key={index} style={{
+            backgroundColor: colours[typeName as keyof typeof colours],
+            borderRadius: '2px',
+            color: 'white',
+          }}>
             {typeName}
           </span>
         ))}
@@ -85,7 +89,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       <h4>Habilidades:</h4>
       <p>Habilidades</p>
 
-      <div className='stats-div'>
+      <div className={styles.displayParalelo}>
       <p>
         <b>Peso:</b> {pokemon?.weight/10} Kg 
       </p>

@@ -1,24 +1,9 @@
 .sprite-position{
     display: flex;
     justify-content: center;
-    background-color: #d8e4e9;
+    background-color: #74d4ec;
     border-radius: 10px;
         
-}
-
-.card-types{
-    display: flex;
-    justify-content: space-evenly;
-}
-
-
-
-
-
-
-.stats-div{
-    display: flex;
-    justify-content: space-evenly;
 }
 
 .stats-items{

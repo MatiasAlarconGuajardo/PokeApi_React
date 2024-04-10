@@ -3,6 +3,7 @@ import { PokemonList } from '../types/types'
 import { getPokemons } from '../api/list';
 import PokeCard from './cards';
 import './characterlist.css'
+import styles from './styles.module.css'
 
 
 const CharacterList = () => {
@@ -28,8 +29,8 @@ const CharacterList = () => {
             })
         }       
       </div>
-      <button className='btn'onClick={()=>setOffset(offset-9)} disabled={offset===0}>Anterior</button>
-      <button className='btn' onClick={()=>setOffset(offset+9)} disabled={offset>=142} >Siguiente</button>
+      <button className={styles.btnPrimary} onClick={()=>setOffset(offset-9)} disabled={offset===0}>Anterior</button>
+      <button className={styles.btnPrimary} onClick={()=>setOffset(offset+9)} disabled={offset>=142} >Siguiente</button>
     </div>
   )
 }

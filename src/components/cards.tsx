@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { CardProps, Pokemon } from '../types/types';
+import { CardProps, Pokemon,colours } from '../types/types';
 import { getPokemons } from '../api/list';
 import './cards.css';
 import PokemonModal from './pokemonModal';
-
 
 
 const PokemonCard: React.FC<CardProps> = ({ url }) => {
@@ -59,7 +58,11 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         <h2 className='name-position'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         <div className='types'>
         {typeNames?.map((typeName, index) => (
-          <span className='subtitle-position' key={index}>
+          <span className='subtitle-position' key={index} style={{
+            backgroundColor: colours[typeName as keyof typeof colours],
+            borderRadius: '2px',
+            color: 'white',
+          }}>
             {typeName}
           </span>
         ))}

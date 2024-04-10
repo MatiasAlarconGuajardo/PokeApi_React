@@ -1,5 +1,6 @@
 import { ReactNode, MouseEvent } from 'react';
-import './sideBar.css';
+import './sideBar.css'
+import styles from './styles.module.css'
 
 
 
@@ -13,7 +14,7 @@ const Sidebar = ({children,isOpen,onClose}: {children: ReactNode,isOpen:boolean,
       <div className='wrapper' >
           <div className='content' onClick={e=>e.stopPropagation()}>
               {children}
-              <button className='btn-close' type='button' onClick={onClose}><b>Cerrar</b></button>
+              <button className={styles.btnPrimary} type='button' onClick={onClose}><b>Cerrar</b></button>
           </div>
       </div>
   </div>

@@ -1,0 +1,35 @@
+.btnPrimary {
+    background: #0c7e7e;
+    border: none;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white ;
+    cursor: pointer;
+  }
+  
+  .btnPrimary:hover,
+  .btnPrimary:active {
+     background-color: #c8e3c5;
+     color: black;
+  }
+  
+  .btnPrimary:active {
+    opacity: 0.5;
+  }
+
+  .btnPrimary:disabled {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+  }
+
+  .displayParalelo {
+    display: flex;
+    justify-content: space-evenly;
+}
+
