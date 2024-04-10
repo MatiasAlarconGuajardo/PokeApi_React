@@ -101,7 +101,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           <b>Defensa: </b>{pokemon.stats[2].base_stat}
           <b>Ataque Especial: </b>{pokemon.stats[3].base_stat}
           <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
-          <b>Velocidad:</b>{pokemon.stats[5].base_stat}
+          <b>Velocidad: </b>{pokemon.stats[5].base_stat}
       </div>
     </div>
   );
