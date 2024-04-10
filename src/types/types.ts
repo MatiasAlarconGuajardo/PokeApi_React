@@ -10,6 +10,7 @@ type abilities = {
       name: string;
       url: string;
     };
+    is_hidden: boolean;
 };
 type stats = {
     base_stat: number;

@@ -71,61 +71,131 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
         height={150}
         width={150}
         src={pokemon.sprites.other['official-artwork'].front_default}
+        onError={e=>{e.currentTarget.src='../assets/placeholder.png'}}
         alt={`${pokemon.name} sprite`}
       />
       </div>
 
-      <div  className='name-container'>
-      <h2 className='id-position'>Nº {pokemon.id}</h2>
+      <div className='name-container'>
+      <h2 className='id-position'>#{pokemon.id}</h2>
       <h2 className='name-position'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
       </div>
 
       <h4 className={styles.titles}>Tipos:</h4>          
       <div className={styles.displayHorizontal}>
         {typeName?.map((typeName, index) => (
-          <span className='subtitle-position' key={index} style={{
+          <div key={index} style={{
             backgroundColor: colours[typeName as keyof typeof colours],
-            borderRadius: '2px',
+            borderRadius: '5px',
+            width:'75px',
             color: 'white',
           }}>
+            <span key={index}>
             {typeName}
           </span>
+            </div>
         ))}
       </div>
 
-      <h4>Descripción:</h4>
-      <p>{flavorText}</p>
+      <h4 className={styles.titles}>Descripción:</h4>
+      <p className='descriptionText'>{flavorText}</p>
     
       <h4 className={styles.titles}>Habilidades:</h4>
       <div className={styles.displayHorizontal}>
-        {
-          abilities.map((ability,index)=>{
+      { abilities.map((ability,index)=>{
             return(
-              <p key={index}>{ability}</p>
+              <p className={styles.abilities} key={index}>{ability}</p>
             )
           })
         }
       </div>
       
       <div className={styles.displayHorizontal}>
-      <p>
-        <b>Peso:</b> {pokemon?.weight/10} Kg 
-      </p>
-      <p>
-        <b>Altura:</b> {pokemon?.height/10} m
-      </p>
-      <p> <b>Exp Base:</b> {pokemon.base_experience} XP</p>
-      </div>
-      <h4 className={styles.titles}><b>Estadísticas:</b></h4>
-      <div className='stats-items'>
-          <b>Vida: </b>{pokemon.stats[0].base_stat}     
-          <b>Ataque: </b>{pokemon.stats[1].base_stat}
-          <b>Defensa: </b>{pokemon.stats[2].base_stat}
-          <b>Ataque Especial: </b>{pokemon.stats[3].base_stat}
-          <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
-          <b>Velocidad: </b>{pokemon.stats[5].base_stat}
+      
+      <span >
+      <b>Peso:</b> <br/>
+      <p className='statsNumber'>{pokemon?.weight/10}Kg </p> 
+     </span>
+      
+      
+     
+      <span>
+        <b>Altura:</b> <br/>
+        <p className='statsNumber'>
+          {pokemon?.height/10}m
+        </p>
+      </span>
+      <span>
+         <b>Exp Base:</b><br/>
+         <p className='statsNumber'>{pokemon.base_experience}</p>
+         </span>
       </div>
 
+      <h4 className={styles.titles}><b>Estadísticas:</b></h4>
+      <div className='stats-items'>
+        <div className={styles.statsDiv}>
+        <p><span className='statsDots' style={{
+              backgroundColor: '#dc2444',
+            }}> HP</span>{pokemon.stats[0].base_stat} </p>
+        </div>     
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#fc9c59',
+            }}> ATK</span>{pokemon.stats[1].base_stat} </p>
+            </div>
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#fcdc58',
+            }}> DEF</span>{pokemon.stats[2].base_stat} </p>
+            </div>
+          
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#85dcfc',
+            }}> SpA</span>{pokemon.stats[3].base_stat} </p>
+            </div>
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#afec94',
+            }}> SpD</span>{pokemon.stats[4].base_stat}</p>
+            </div>
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#fc95ac',
+            }}> SPD</span>{pokemon.stats[5].base_stat}</p>
+            </div>
+            <div className={styles.statsDiv}>
+            <p><span className='statsDots'style={{
+              backgroundColor: '#8cb4fc',
+            }}> TOT</span>{pokemon.stats[0].base_stat+pokemon.stats[1].base_stat+pokemon.stats[2].base_stat+pokemon.stats[3].base_stat+pokemon.stats[4].base_stat+pokemon.stats[5].base_stat}</p>
+          </div>         
+          
+          
+      </div>
+      <div className='paginationId' onClick={e=>e.stopPropagation()}>
+            <div className='pagination'>
+              <div className='paginationDiv' onClick={()=>console.log("Anterior")}>
+                <img
+                  height={"40px"}
+                  width={"40px"}
+                  alt={`${pokemon.name} sprite`}
+                  src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}/> 
+                    <p className='paginationP'>Anterior</p>
+                    <p>#idAnterior</p>
+              </div>
+                <hr/>
+              <div className='paginationDiv' onClick={()=>console.log("Siguiente")}>
+                <p> # idSiguiente</p>
+                <p className='paginationP'>Siguiente</p>
+                   <img
+                 height={"40px"} 
+                 width={"40px"}
+                 alt={`${pokemon.name} sprite`}
+                 src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}/> 
+                   
+              </div>
+            </div>
+          </div>
     </div>
   );
 };

@@ -4,15 +4,30 @@
     border: solid 1px beige;
     /* background-color: #c8e3c5; */
     background-color: white;
-    margin: 60px;
+    top: 35px;
+    margin: 25px;
+    right: 13%;
     padding-top: 50px;
     padding-bottom: 20px;
     box-shadow: 0 0px 10px rgba(53, 21, 21, 0.2);
-    width: 300px;
-    height: 140px;
+    width: 375px;
+    height: 115px;
     font-family: "system-ui";
     border-radius: 8px;
     position: relative;
+}
+
+.dot {
+    height: 125px;
+    width: 125px; 
+    border: solid 1px beige; 
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(53, 21, 21, 0.2);
+    position: absolute; 
+    top: -70px; 
+    z-index: 0;
+    justify-self: center;
 }
 
 .characterImg {
@@ -28,6 +43,7 @@
 .id-position {
     color:#9ca4b4;
     margin-top: 5em 0;
+    margin: 0px;
     font-size: 15px;
 }
 

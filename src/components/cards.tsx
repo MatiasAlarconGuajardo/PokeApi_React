@@ -6,11 +6,13 @@ import styles from './styles.module.css'
 import PokemonModal from './pokemonModal'
 
 
+
 const PokemonCard: React.FC<CardProps> = ({ url }) => {
 
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [typeNames, setTypeNames] = useState<string[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,22 +59,30 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
   return (
     <>
       <div className='card' onClick={() => setOpenModal(!openModal)}>
+        {/* <span className="dot"></span> */}
         <img
           className='characterImg'
           src={pokemon?.sprites.versions['generation-v']['black-white'].animated.front_default}
+          onError={e=>{e.currentTarget.src='../assets/placeholder.png'}}
           alt={`${pokemon?.name} sprite`}
         />
+        
         <h2 className='id-position'>Nº {pokemon?.id}</h2>
         <h2 className='name-position'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         <div className={styles.displayHorizontal}>
         {typeNames?.map((typeName, index) => (
-          <span className='subtitle-position' key={index} style={{
+          <div key={index} style={{
             backgroundColor: colours[typeName as keyof typeof colours],
-            borderRadius: '2px',
+            borderRadius: '5px',
+            width: '75px',
+            fontSize: 'large',
             color: 'white',
           }}>
+            <span className='subtitle-position' key={index} >
             {typeName}
           </span>
+          </div>
+          
         ))}
         </div>
       </div>

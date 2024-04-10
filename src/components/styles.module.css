@@ -38,5 +38,34 @@
 }
 
 .titles{
-  margin: 0;
+  margin-bottom: 2px;
+}
+
+.close{
+  color: #5884dd;
+  font-size: 35px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: 25px;
+  margin-top: 1px;
+  margin-bottom: 0;
+  width: 30px;
+ 
+}
+
+.statsDiv{
+  background-color: rgba(128, 128, 128, 0.123);
+  border-radius: 20px;
+  align-content: center;
+  height: 65px;
+}
+.abilities{
+  background-color: rgba(128, 128, 128, 0.123);
+  border: 1px solid #30446e;
+  border-radius: 25px;
+  width: 150px;
+  height: 30px;
+  align-content: center;
 }

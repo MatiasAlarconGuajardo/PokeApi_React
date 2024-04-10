@@ -13,8 +13,11 @@ const Sidebar = ({children,isOpen,onClose}: {children: ReactNode,isOpen:boolean,
       <div className='overlay' onClick={onClose}>
       <div className='wrapper' >
           <div className='content' onClick={e=>e.stopPropagation()}>
-              {children}
-              <button className={styles.btnPrimary} type='button' onClick={onClose}><b>Cerrar</b></button>
+  
+          <p className={styles.close}  onClick={onClose}><b>&times;</b></p>
+          
+          {children}
+              
           </div>
       </div>
   </div>

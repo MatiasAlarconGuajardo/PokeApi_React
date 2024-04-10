@@ -1,7 +1,7 @@
 body{
-  /* background-image: url('../public/assets/background.jpg') ;  */
-  background-color: #f4f4fc;
-}
+  /*background-image: url('../public/assets/background.jpg') ;*/  
+   background-color: #f4f4fc; 
+} 
 
 .app-container {
   display: flex;
@@ -12,6 +12,6 @@ body{
 .character-list {
   flex: 1;
   padding: 20px;
-  margin: 1;
+  margin: 0;
 }
 
