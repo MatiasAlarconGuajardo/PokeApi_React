@@ -22,16 +22,18 @@
 }
 
 .wrapper {
-  background-color: #ecf4e4;
+  /* background-color: #ecf4e4; */
+  background-color: #f4f4fc;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(53, 21, 21, 0.1);
   width: 30%;
   height: 100%;
   max-width: 90%;
   max-height: 90%;
-  overflow: hidden;
-  box-shadow: 0 10px 8px black;
-  border: 1px solid black;
+  overflow: auto;
+  box-shadow: 0 0px 10px rgba(53, 21, 21, 0.2);
+  border: none;
+  /* border: 1px solid black; */
 
   @media screen and (max-width: 1660px) {
       width: auto;
@@ -40,7 +42,7 @@
 }
 
 .content {
-  padding: 20px;
+  padding: 0px;
 }
 
 @keyframes slide-in {

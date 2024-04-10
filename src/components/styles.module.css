@@ -28,8 +28,17 @@
     cursor: not-allowed;
   }
 
-  .displayParalelo {
+  .displayHorizontal {
+    font-size: large;
     display: flex;
     justify-content: space-evenly;
 }
 
+.displayHabilitades{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.titles{
+  margin: 0;
+}

@@ -1,15 +1,22 @@
 .sprite-position{
-    display: flex;
+    display:flex;
     justify-content: center;
-    background-color: #74d4ec;
-    border-radius: 10px;
-        
+    margin-top: 40px;      
 }
 
 .stats-items{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 1em 1em;
-    
 }
 
+
+.characterImg {
+    justify-self: center;
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+    position: absolute; 
+    top: -60px; 
+    z-index: 1; 
+}

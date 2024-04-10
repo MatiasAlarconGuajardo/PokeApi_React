@@ -7,17 +7,14 @@ import styles from './styles.module.css';
 const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
     
     const [flavorText, setFlavorText] = useState<string>('');
-   // const [abilities,setAbilities] = useState<string[]>([]);
+    const [abilities,setAbilities] = useState<string[]>([]);
     
     useEffect(() => {
         const fetchFlavorText = async () => {
           try {
             const urlFlavor =`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`;
             const response = await getPokemons.getData(urlFlavor);
-            //console.log(pokemon)
-            
-            
-
+                       
             const data = response.data;
             const filteredEntries = data.flavor_text_entries.filter(
               (entry: any) => entry.language.name === 'es'
@@ -25,8 +22,13 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
             if (filteredEntries.length > 0) {
               setFlavorText(filteredEntries[0].flavor_text);
             } else {
-              console.log('No se encontró texto en español.');
+              setFlavorText('No se encontró texto en español.');
             }
+            const abilitiesPromises = pokemon.abilities.map((ability: { ability: { url: string; }; }) =>
+              fetchAbilities(ability.ability.url)
+            );
+            const abilitiesArray = await Promise.all(abilitiesPromises);
+            setAbilities(abilitiesArray);
           } catch (error) {
             console.error('Error al obtener el texto:', error);
           }
@@ -35,27 +37,23 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       }, [pokemon]);
 
 
-      // const abilities = pokemon.abilities.map((ability: { ability: { url: string; }; }) =>
-
-      //   //console.log(ability.ability.url)
-      //   fetchAbilities(ability.ability.url)
-      // );
-
-      // const abilitiesArray = await Promise.all(abilities);
-      // console.log(abilitiesArray);
-      // const fetchAbilities = async (typeUrl:string) => {
-      //   try{
-
-      //   }catch(error){
-      //     console.error('Error al obtener las habilidades:', error);
-      //   }
-
-      // }
+      const fetchAbilities = async (typeUrl:string) => {
+        try{
+          const response = await getPokemons.getData(typeUrl);
+          const data = await response.data;
+          const abilitesNames=data.names.find(
+            (name:any) => name.language.name === 'es'
+          );
+          return abilitesNames?abilitesNames.name:"Nombre no encontrado";
+        }catch(error){
+          console.error('Error al obtener las habilidades:', error);
+        }
+      }
     
 
   return (
     <div className='info-continer'>
-      <div className='sprite-position'>
+      <div className={'sprite-position'}>
       <img  
         height={150}
         width={150}
@@ -68,13 +66,8 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       <h2 className='id-position'>Nº {pokemon.id}</h2>
       <h2 className='name-position'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
       </div>
-
-      <h4>Descripcion:</h4>
-      <p>{flavorText}</p>
-      <h4>Tipos:</h4>  
-      
-          
-      <div className={styles.displayParalelo}>
+      <h4 className={styles.titles}>Tipos:</h4>          
+      <div className={styles.displayHorizontal}>
         {typeName?.map((typeName, index) => (
           <span className='subtitle-position' key={index} style={{
             backgroundColor: colours[typeName as keyof typeof colours],
@@ -85,11 +78,21 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           </span>
         ))}
       </div>
-
-      <h4>Habilidades:</h4>
-      <p>Habilidades</p>
-
-      <div className={styles.displayParalelo}>
+      <h4>Descripción:</h4>
+      <p>{flavorText}</p>
+    
+      <h4 className={styles.titles}>Habilidades:</h4>
+      <div className={styles.displayHorizontal}>
+        {
+          abilities.map((ability,index)=>{
+            return(
+              <p key={index}>{ability}</p>
+            )
+          })
+        }
+      </div>
+      
+      <div className={styles.displayHorizontal}>
       <p>
         <b>Peso:</b> {pokemon?.weight/10} Kg 
       </p>
@@ -98,7 +101,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       </p>
       <p> <b>Exp Base:</b> {pokemon.base_experience} XP</p>
       </div>
-      <h4><b>Estadisticas:</b></h4>
+      <h4 className={styles.titles}><b>Estadísticas:</b></h4>
       <div className='stats-items'>
           <b>Vida: </b>{pokemon.stats[0].base_stat}     
           <b>Ataque: </b>{pokemon.stats[1].base_stat}
