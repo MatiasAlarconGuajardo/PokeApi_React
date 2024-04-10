@@ -1,35 +1,43 @@
-.card{
+.card {
     display: grid;
-    border: solid 1px black;
-    margin: 10px;
-    padding: 1rem;
+    align-items: center;
+    border: solid 1px beige;
+    background-color: #c8e3c5;
+    margin: 60px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    box-shadow: 0 10px 8px rgba(53, 21, 21, 0.2);
     width: 300px;
-    height: 300px;
+    height: 150;
     font-family: "system-ui";
     border-radius: 8px;
-    box-shadow: 5px 5px 5px black;
+    position: relative;
 }
 
-.characterImg{
-    justify-self: center;  
-    object-fit:contain;
+.characterImg {
+    justify-self: center;
+    object-fit: contain;
     width: 100px;
     height: 100px;
-    ;
+    position: absolute; 
+    top: -60px; 
+    z-index: 1; 
 }
 
 .id-position {
-   margin-top: 5em 0;
+    margin-top: 5em 0;
+    font-size: 15px;
 }
+
 .name-position {
     margin-top: 0;
 }
 
 .subtitle-position {
     margin-bottom: 0;
-} 
+}
 
-.types{
+.types {
     font-size: large;
     display: flex;
     justify-content: space-evenly;

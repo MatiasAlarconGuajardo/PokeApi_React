@@ -44,7 +44,9 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
       console.error('Error al obtener los tipos:', error);
     }
   }
-
+  if(pokemon && pokemon.id>151){
+    return null;
+}else{
   return (
     <>
       <div className='card' onClick={() => setOpenModal(!openModal)}>
@@ -54,7 +56,7 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
           alt={''}
         />
         <h2 className='id-position'>Nº {pokemon?.id}</h2>
-        <h2 className='name-position'>{pokemon?.name}</h2>
+        <h2 className='name-position'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         <div className='types'>
         {typeNames?.map((typeName, index) => (
           <span className='subtitle-position' key={index}>
@@ -68,6 +70,8 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
       )}
     </>
   );
+}
+  
 };
 
 export default PokemonCard;

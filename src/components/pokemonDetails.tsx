@@ -66,7 +66,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
 
       <div  className='name-container'>
       <h2 className='id-position'>Nº {pokemon.id}</h2>
-      <h2 className='name-position'>{pokemon.name}</h2>
+      <h2 className='name-position'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
       </div>
 
       <h4>Descripcion:</h4>
