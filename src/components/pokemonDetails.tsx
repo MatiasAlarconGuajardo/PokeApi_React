@@ -12,27 +12,34 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
     useEffect(() => {
         const fetchFlavorText = async () => {
           try {
+            
             const urlFlavor =`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}/`;
             const response = await getPokemons.getData(urlFlavor);
                        
             const data = response.data;
+
             const filteredEntries = data.flavor_text_entries.filter(
               (entry: any) => entry.language.name === 'es'
             );
+
             if (filteredEntries.length > 0) {
               setFlavorText(filteredEntries[0].flavor_text);
             } else {
-              setFlavorText('No se encontró texto en español.');
+              setFlavorText('No se encontró descripción en español.');
             }
+
             const abilitiesPromises = pokemon.abilities.map((ability: { ability: { url: string; }; }) =>
               fetchAbilities(ability.ability.url)
             );
+
             const abilitiesArray = await Promise.all(abilitiesPromises);
             setAbilities(abilitiesArray);
+
           } catch (error) {
             console.error('Error al obtener el texto:', error);
           }
         };
+
         fetchFlavorText();
       }, [pokemon]);
 
@@ -44,7 +51,12 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           const abilitesNames=data.names.find(
             (name:any) => name.language.name === 'es'
           );
-          return abilitesNames?abilitesNames.name:"Nombre no encontrado";
+          if (abilitesNames){
+            return abilitesNames.name;
+          }
+          else{
+            return abilitesNames.name="Nombre no encontrado"
+          }
         }catch(error){
           console.error('Error al obtener las habilidades:', error);
         }
@@ -54,6 +66,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
   return (
     <div className='info-continer'>
       <div className={'sprite-position'}>
+        
       <img  
         height={150}
         width={150}
@@ -66,6 +79,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
       <h2 className='id-position'>Nº {pokemon.id}</h2>
       <h2 className='name-position'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
       </div>
+
       <h4 className={styles.titles}>Tipos:</h4>          
       <div className={styles.displayHorizontal}>
         {typeName?.map((typeName, index) => (
@@ -78,6 +92,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           </span>
         ))}
       </div>
+
       <h4>Descripción:</h4>
       <p>{flavorText}</p>
     
@@ -110,6 +125,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           <b>Defensa Especial: </b>{pokemon.stats[4].base_stat}
           <b>Velocidad: </b>{pokemon.stats[5].base_stat}
       </div>
+
     </div>
   );
 };

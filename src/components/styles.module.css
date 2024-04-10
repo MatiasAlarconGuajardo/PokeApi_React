@@ -2,18 +2,16 @@
     background: #5884dd;
     border: none;
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1) ;
     font-size: 16px;
     font-weight: 500;
     margin: 10px;
     padding: 10px;
-    box-sizing: border-box;
     color: white ;
     cursor: pointer;
   }
   
-  .btnPrimary:hover,
-  .btnPrimary:active {
+  .btnPrimary:hover {
      background-color: #99b4e9;
      color: white;
   }

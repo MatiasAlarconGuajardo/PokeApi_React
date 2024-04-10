@@ -7,6 +7,7 @@ import PokemonModal from './pokemonModal'
 
 
 const PokemonCard: React.FC<CardProps> = ({ url }) => {
+
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [typeNames, setTypeNames] = useState<string[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -20,9 +21,10 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         const typePromises = response.data.types.map((type: { type: { url: string; }; }) =>
           getTypeNames(type.type.url)
         );
-        //console.log(typePromises)
+        
         const typeNamesArray = await Promise.all(typePromises);
         setTypeNames(typeNamesArray);
+
       } catch (error) {
         console.error('Error al obtener los datos:', error);
       }
@@ -37,13 +39,18 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         const esNames=data.names.find(
          (name:any) => name.language.name === 'es'
         );
-        //console.log(esNames);
-        return esNames?esNames.name:"Nombre no encontrado";
+        if(esNames){
+          return esNames.name;
+        }else{
+          return esNames.name="Nombre no encontrado";
+        }
     }
     catch(error){
       console.error('Error al obtener los tipos:', error);
     }
   }
+
+  
   if(pokemon && pokemon.id>151){
     return null;
 }else{
@@ -75,7 +82,7 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
     </>
   );
 }
-  
+
 };
 
 export default PokemonCard;

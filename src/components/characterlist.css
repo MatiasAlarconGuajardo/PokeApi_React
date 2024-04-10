@@ -10,13 +10,14 @@
 }
 
 
-@media (max-width: 800px) {
+
+@media all and (max-width: 800px) {
   .parent {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 400px) {
+@media all and (max-width: 400px) {
   .parent {
     grid-template-columns: repeat(1, 1fr);
   }

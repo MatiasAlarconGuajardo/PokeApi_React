@@ -1,5 +1,4 @@
-export type pokeType = {
-    slot: number;
+type pokeType = {
     type: {
       name: string;
       url: string;
@@ -11,12 +10,9 @@ type abilities = {
       name: string;
       url: string;
     };
-    is_hidden: boolean;
-    slot: number;
 };
 type stats = {
     base_stat: number;
-    effort: number;
     stat: {
         name: string;
         url: string;
