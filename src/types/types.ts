@@ -67,6 +67,7 @@ export interface ModalProps {
 export interface DetailsProps {
     pokemon: Pokemon;
     typeName:string[];
+    pokemonId:number;
   }
 
   

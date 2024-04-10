@@ -1,0 +1,38 @@
+.paginationId {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pagination{
+    background-color: #b1b8c7a9;
+    color:  #162442;
+    font-weight: bold;
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    width: 80%;
+    height: 58px;
+    
+}
+.paginationDiv{
+    cursor: pointer; 
+    width: 50%;
+    margin: 2px;
+    display: flex;
+    align-content:  center;
+    justify-content: space-around;
+}
+.paginationP{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+hr{
+    height:25px;
+    width:1px;
+    align-self: center;
+    border-width:1;
+    color:#000;
+    background-color:gray;
+}

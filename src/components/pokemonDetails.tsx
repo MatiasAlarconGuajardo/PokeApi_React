@@ -4,7 +4,7 @@ import { getPokemons } from '../api/list';
 import './pokemonDetails.css';
 import styles from './styles.module.css';
 
-const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
+const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName,pokemonId }) => {
     
     const [flavorText, setFlavorText] = useState<string>('');
     const [abilities,setAbilities] = useState<string[]>([]);
@@ -172,30 +172,7 @@ const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
           
           
       </div>
-      <div className='paginationId' onClick={e=>e.stopPropagation()}>
-            <div className='pagination'>
-              <div className='paginationDiv' onClick={()=>console.log("Anterior")}>
-                <img
-                  height={"40px"}
-                  width={"40px"}
-                  alt={`${pokemon.name} sprite`}
-                  src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}/> 
-                    <p className='paginationP'>Anterior</p>
-                    <p>#idAnterior</p>
-              </div>
-                <hr/>
-              <div className='paginationDiv' onClick={()=>console.log("Siguiente")}>
-                <p> # idSiguiente</p>
-                <p className='paginationP'>Siguiente</p>
-                   <img
-                 height={"40px"} 
-                 width={"40px"}
-                 alt={`${pokemon.name} sprite`}
-                 src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default}/> 
-                   
-              </div>
-            </div>
-          </div>
+      
     </div>
   );
 };

@@ -44,38 +44,3 @@
     top:-16px;
     position: relative;
 }
-.paginationId {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.pagination{
-    background-color: #b1b8c7a9;
-    color:  #162442;
-    font-weight: bold;
-    display: flex;
-    border: none;
-    border-radius: 25px;
-    width: 80%;
-    
-}
-.paginationDiv{
-    cursor: pointer; 
-    width: 50%;
-    margin: 5px;
-    display: flex;
-    align-content: center;
-}
-.paginationP{
-    display: flex;
-    justify-content: flex-end;
-}
-hr{
-    height:25px;
-    width:1px;
-    align-self: center;
-    border-width:1;
-    color:#000;
-    background-color:gray;
-}
