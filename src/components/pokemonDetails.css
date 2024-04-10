@@ -1,7 +1,20 @@
+.sprite-position{
+    display: flex;
+    justify-content: center;
+    background-color: #d8e4e9;
+    border-radius: 10px;
+        
+}
+
 .card-types{
     display: flex;
     justify-content: space-evenly;
 }
+
+
+
+
+
 
 .stats-div{
     display: flex;
@@ -9,10 +22,9 @@
 }
 
 .stats-items{
-    display: flex;
-    flex-direction: row;
-    align-items:normal;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     padding: 1em 1em;
     
 }
+

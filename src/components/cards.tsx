@@ -3,7 +3,7 @@ import { CardProps, Pokemon } from '../types/types';
 import { getPokemons } from '../api/list';
 import './cards.css';
 import PokemonModal from './pokemonModal';
-//import Sidebar from './sideBar';
+
 
 
 const PokemonCard: React.FC<CardProps> = ({ url }) => {
@@ -37,14 +37,16 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         const esNames=data.names.find(
          (name:any) => name.language.name === 'es'
         );
-        console.log(esNames);
+        //console.log(esNames);
         return esNames?esNames.name:"Nombre no encontrado";
     }
     catch(error){
       console.error('Error al obtener los tipos:', error);
     }
   }
-
+  if(pokemon && pokemon.id>151){
+    return null;
+}else{
   return (
     <>
       <div className='card' onClick={() => setOpenModal(!openModal)}>
@@ -54,7 +56,7 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
           alt={''}
         />
         <h2 className='id-position'>Nº {pokemon?.id}</h2>
-        <h2 className='name-position'>{pokemon?.name}</h2>
+        <h2 className='name-position'>{pokemon && pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
         <div className='types'>
         {typeNames?.map((typeName, index) => (
           <span className='subtitle-position' key={index}>
@@ -64,11 +66,12 @@ const PokemonCard: React.FC<CardProps> = ({ url }) => {
         </div>
       </div>
       {pokemon && (
-        //<Sidebar  isOpen={openModal} pokemon={pokemon} />
         <PokemonModal isOpen={openModal} onClose={() => setOpenModal(false)} pokemon={pokemon} typeName={typeNames} />
       )}
     </>
   );
+}
+  
 };
 
 export default PokemonCard;

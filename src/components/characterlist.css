@@ -1,31 +1,51 @@
 .parent {
-    margin: 0 auto;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.btn {
+  background: #9cad9a;
+  border: 1px solid #9cad9a;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: black ;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active {
+   background-color: #c8e3c5;
+}
+
+.btn:active {
+  opacity: 0.5;
+}
+
+
+@media (max-width: 800px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .btn {
-    margin: 10px;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .parent {
+    grid-template-columns: repeat(1, 1fr);
   }
-  
-  @media (max-width: 800px) {
-    .parent {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 400px) {
-    .parent {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-  
+}
+
+
+
