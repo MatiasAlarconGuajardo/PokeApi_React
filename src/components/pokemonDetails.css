@@ -1,6 +1,7 @@
 .sprite-position{
     display:flex;
     justify-content: center;
+    position:relative;
     margin-top: 40px;      
 }
 
@@ -10,13 +11,3 @@
     padding: 1em 1em;
 }
 
-
-.characterImg {
-    justify-self: center;
-    object-fit: contain;
-    width: 100px;
-    height: 100px;
-    position: absolute; 
-    top: -60px; 
-    z-index: 1; 
-}
