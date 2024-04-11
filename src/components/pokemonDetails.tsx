@@ -4,7 +4,7 @@ import { getPokemons } from '../api/list';
 import './pokemonDetails.css';
 import styles from './styles.module.css';
 
-const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName,pokemonId }) => {
+const PokemonDetails: React.FC<DetailsProps> = ({ pokemon,typeName }) => {
     
     const [flavorText, setFlavorText] = useState<string>('');
     const [abilities,setAbilities] = useState<string[]>([]);

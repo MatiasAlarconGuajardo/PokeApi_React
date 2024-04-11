@@ -6,12 +6,7 @@ body{
 .app-container {
   display: flex;
   text-align: center;
+  justify-content: center;
   
-}
-
-.character-list {
-  flex: 1;
-  padding: 20px;
-  margin: 0;
 }
 
